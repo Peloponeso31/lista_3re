@@ -4,12 +4,12 @@
 
 int main(int argc, char * argv)
 {
-    struct nodo otro_nodo = {8, NULL};
-    struct nodo inicio = {5, &otro_nodo};
+    struct nodo segundo_nodo = {8, NULL};
+    struct nodo inicio = {5, &segundo_nodo};
 
-    struct nodo * actual = &inicio;
-    
-    printf("Dato: %d\tSiguiente: %p\tDireccion del nodo: %p\n", inicio.dato, inicio.siguiente, &inicio);
-    printf("Dato: %d\tSiguiente: %p\tDireccion del nodo: %p\n", otro_nodo.dato, otro_nodo.siguiente, &otro_nodo);
+    recorrer_rec(&inicio);
+
+    //int cantidad_nodos = contar(&inicio);
+
     return 0;
 }
