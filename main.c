@@ -25,7 +25,7 @@ int main(int argc, char * argv)
 
     
     // Cuando se ejecuta:
-    recorrer(&inicio);
+    imprimir_nodos(&inicio);
 
     // Se obtiene como salida:
     // Dato: 1         Siguiente: 0000000BEAFFFC70

@@ -53,4 +53,39 @@ int contar(struct nodo * nodo)
     return 1 + contar(nodo->siguiente);
 }
 
+void imprimir_nodos(nodo*inicio)
+{
+    // Alan Flores participo
+    nodo * temp = inicio;
+    
+    printf("[");
+
+    while(temp != NULL)
+    {
+        printf("%d",temp->dato);
+        if(temp ->siguiente != NULL) printf(", ");
+        temp = temp->siguiente;
+    }
+
+    printf("]\n");
+}
+
+/**
+ * Funcion que agrega un nuevo nodo al final de una
+ * serie de nodos.
+ * 
+ * @param nodo Direccion de memoria del nodo desde
+ * donde se quiere recorrer
+ * 
+ * @param nuevo Numero entero que se quiere agregar
+ * al final de una serie de nodos.
+ * 
+ * @return 0 si no se pudo agregar el elemento
+ * exitosamente, 1 si fue agregado con exito.
+ */
+int agregar_final(struct nodo * nodo, int nuevo)
+{
+    
+}
+
 #endif
