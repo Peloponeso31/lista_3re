@@ -1,6 +1,8 @@
 #ifndef _HEADER_NODO_
 #define _HEADER_NODO_
 
+#include <stdlib.h>
+
 typedef struct nodo {
     int dato;
     struct nodo * siguiente;
@@ -85,7 +87,21 @@ void imprimir_nodos(nodo*inicio)
  */
 int agregar_final(struct nodo * nodo, int nuevo)
 {
-    
+    if (nodo == NULL) return 0;
+    if (nodo->siguiente == NULL)
+    {
+        nodo->siguiente = malloc(sizeof(struct nodo));
+
+        if (nodo->siguiente == NULL) return 0;
+        
+        nodo = nodo->siguiente;
+        nodo->dato = nuevo;
+        nodo->siguiente = NULL;
+
+        return 1;
+    }
+
+    return 1 && agregar_final(nodo->siguiente, nuevo);
 }
 
 #endif

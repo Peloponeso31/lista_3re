@@ -23,16 +23,18 @@ int main(int argc, char * argv)
     struct nodo segundo_nodo = {2, &tercer_nodo};
     struct nodo inicio = {1, &segundo_nodo};
 
-    
+    agregar_final(&inicio, 99);
+    agregar_final(&inicio, 98);
+    agregar_final(&inicio, 97);
+    agregar_final(&inicio, 96);
+    agregar_final(&inicio, 95);
+    agregar_final(&inicio, 94);
+
     // Cuando se ejecuta:
     imprimir_nodos(&inicio);
 
     // Se obtiene como salida:
-    // Dato: 1         Siguiente: 0000000BEAFFFC70
-    // Dato: 2         Siguiente: 0000000BEAFFFC80
-    // Dato: 3         Siguiente: 0000000BEAFFFCA0
-    // Dato: 4         Siguiente: 0000000BEAFFFC90
-    // Dato: 5         Siguiente: 0000000000000000
+    // [1, 2, 3, 4, 5, 99, 98, 97, 96, 95, 94]
 
     return 0;
 }
