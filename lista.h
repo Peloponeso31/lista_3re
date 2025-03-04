@@ -31,7 +31,13 @@ struct lista * crear_lista_entero(int dato)
 
 struct lista * crear_lista_nodo(struct nodo * nodo)
 {
-    
+    if (nodo == NULL) return NULL;
+    struct lista * nueva_lista = malloc(sizeof(struct lista));
+
+    nueva_lista->inicio = nodo;
+    nueva_lista->largo = 0;
+
+    return nueva_lista;
 }
 
 // Agrega elementos al final de la lista

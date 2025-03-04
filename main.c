@@ -4,7 +4,18 @@
 
 int main(int argc, char * argv)
 {
-    struct lista * lista = crear_lista_entero(1);
+    struct lista * lista = crear_lista_nodo(& (nodo) {
+        .dato = 987,
+        .siguiente = NULL
+    });
+
+    if (lista == NULL) 
+    {
+        printf("No hay lista que operar\n");
+
+        return 0;
+    }
+
     append(lista, 2);
     append(lista, 3);
     append(lista, 4);
