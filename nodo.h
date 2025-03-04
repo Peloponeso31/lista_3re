@@ -9,41 +9,6 @@ typedef struct nodo {
 } nodo;
 
 /**
- * Funcion que recorre nodos e imprime el dato que contienen y la direccion de 
- * memoria de su siguiente elemento desde uno en particular hasta llegar al 
- * final deestos de manera incondicional.
- * 
- * @param nodo Direccion de memoria del nodo desde el cual se quiere recorrer.
- */
-void recorrer(struct nodo * nodo)
-{
-    while (nodo != NULL)
-    {
-        printf(
-            "Dato: %d\t\tSiguiente: %p\n",
-            nodo->dato,
-            nodo->siguiente
-        );
-
-        nodo = nodo->siguiente;
-    }
-}
-
-void recorrer_recursivo(struct nodo * nodo)
-{
-    if (nodo == NULL) return;
-    
-    printf(
-        "Dato: %d\t\tSiguiente: %p\n",
-        nodo->dato,
-        nodo->siguiente
-    );
-
-    recorrer_recursivo(nodo->siguiente);
-}
-
-
-/**
  * Funcion que recorre nodos y los cuenta hasta llegar al final.
  * 
  * @param nodo Direccion de memoria del nodo desde el cual se quiere recorrer.
@@ -102,6 +67,33 @@ int agregar_final(struct nodo * nodo, int nuevo)
     }
 
     return 1 && agregar_final(nodo->siguiente, nuevo);
+}
+
+
+/**
+ * Funcion que agrega inserta un nodo entre dos nodos.
+ * 
+ * @param nodo Direccion de memoria del nodo al que se
+ * quiere insertar el siguiente elemento (se inserta
+ * "a la derecha").
+ * 
+ * @param nuevo Valor que guardara el nuevo nodo.
+ * 
+ * @return 0 si no se pudo agregar el elemento
+ * exitosamente, 1 si fue agregado con exito.
+ */
+int insertar_entre_nodos(struct nodo * nodo, int valor)
+{
+    if (nodo == NULL) return 0;
+
+    struct nodo * nuevo = malloc(sizeof(struct nodo));
+    if (nuevo == NULL) return 0;
+
+    nuevo->dato = valor;
+    nuevo->siguiente = nodo->siguiente;
+    nodo->siguiente = nuevo;
+    
+    return 1;
 }
 
 #endif
