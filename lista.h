@@ -40,10 +40,37 @@ struct lista * crear_lista_nodo(struct nodo * nodo)
     return nueva_lista;
 }
 
-// Agrega elementos al final de la lista
+/**
+ * Funcion que agrega al inicio de una lista.
+ * 
+ * @param lista Direccion de memoria de la lista a la que se agregara el nodo.
+ * @param nodo Direccion de memoria del nodo que se agregara.
+ * 
+ * @returns 1 si se agrego el elemento correctamente, 0 si se pasan
+ * valores nulos.
+ */
+int agregar_inicio(struct lista * lista, struct nodo * nodo)
+{
+    if (lista == NULL || nodo == NULL) return 0;
+    nodo->siguiente = lista->inicio;
+    lista->inicio = nodo;
+    lista->largo++;
+
+    return 1;
+}
+
 int append(struct lista * lista, int dato)
 {
     if (lista == NULL) return 0;
+    
+    // Caso especial, la lista esta vacia:
+    if (lista->inicio == NULL && lista->largo == -1)
+    {
+        lista->inicio = crear_nodo(dato, NULL);
+        lista->largo++;
+        return 1;
+    }
+    
     lista->largo++;
     return agregar_final(lista->inicio, dato);
 }

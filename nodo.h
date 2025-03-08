@@ -8,6 +8,15 @@ typedef struct nodo {
     struct nodo * siguiente;
 } nodo;
 
+struct nodo * crear_nodo(int dato, struct nodo * siguiente)
+{
+    struct nodo * nodo = malloc(sizeof(struct nodo));
+    nodo->dato = dato;
+    nodo->siguiente = siguiente;
+
+    return nodo;
+}
+
 /**
  * Funcion que recorre nodos y los cuenta hasta llegar al final.
  * 

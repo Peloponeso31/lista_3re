@@ -4,10 +4,7 @@
 
 int main(int argc, char * argv)
 {
-    struct lista * lista = crear_lista_nodo(& (nodo) {
-        .dato = 987,
-        .siguiente = NULL
-    });
+    struct lista * lista = crear_lista();
 
     if (lista == NULL) 
     {
@@ -16,13 +13,15 @@ int main(int argc, char * argv)
         return 0;
     }
 
+    append(lista, 1);
     append(lista, 2);
     append(lista, 3);
     append(lista, 4);
-    append(lista, 5);
-    append(lista, 6);
-    append(lista, 7);
-    append(lista, 8);
+
+    agregar_inicio(lista, &(nodo) {
+        .dato = 99,
+        .siguiente = NULL
+    });
 
     imprimir_nodos(lista->inicio);
 
