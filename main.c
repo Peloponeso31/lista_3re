@@ -1,14 +1,46 @@
 #include <stdio.h>
-#include "nodo.h"
+#include <stdlib.h>
 #include "lista.h"
+#include "nodo.h"
 
-int main(int argc, char * argv)
-{
-    struct nodo otro_nodo = {8, NULL};
-    struct nodo inicio = {5, &otro_nodo};
+struct nodo* crearNodo(int dato) {
+    struct nodo* nuevoNodo = (struct nodo*)malloc(sizeof(struct nodo));
+    nuevoNodo->dato = dato;
+    nuevoNodo->siguiente = NULL;
+    return nuevoNodo;
+}
 
-    
-    printf("Dato: %d\tSiguiente: %p\tDireccion del nodo: %p\n", inicio.dato, inicio.siguiente, &inicio);
-    printf("Dato: %d\tSiguiente: %p\tDireccion del nodo: %p\n", otro_nodo.dato, otro_nodo.siguiente, &otro_nodo);
+//agg nodo entre 1 y 2
+
+
+void imprimirLista(struct nodo* inicio) {
+    struct nodo* actual = inicio;
+    while (actual != NULL) {
+        printf("%d -> ", actual->dato);
+        actual = actual->siguiente;
+    }
+    printf("NULL\n");
+}
+int main() {
+    struct nodo *lista = NULL;
+
+    // Creando la lista: [1, 2, 3]
+    lista = crear_nodo(1, NULL);
+    agregar_final(lista, 2);
+    agregar_final(lista, 3);
+
+    printf("Antes de agregar: ");
+    imprimir_nodos(lista);
+
+    // Creando el nodo a agregar
+    struct nodo *nuevo_nodo = crear_nodo(99, NULL);
+
+    // Agregar al inicio
+    agregar_inicio(&lista, nuevo_nodo);
+
+    printf("Despues de agregar: ");
+    imprimir_nodos(lista);
+
     return 0;
 }
+
